@@ -101,6 +101,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\ExampleQuery.sql" />
     <Content Include="App_Data\Homebook.mdf" />
     <Content Include="App_Data\Homebook_log.ldf">
       <DependentUpon>Homebook.mdf</DependentUpon>
