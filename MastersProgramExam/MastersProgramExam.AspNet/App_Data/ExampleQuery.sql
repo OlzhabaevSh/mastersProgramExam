@@ -8,6 +8,9 @@ INSERT INTO Region(Id, Title) VALUES(2, 'Russia')
 INSERT INTO Region(Id, Title) VALUES(3, 'USA')
 INSERT INTO Region(Id, Title) VALUES(4, 'German')
 
+
+
+
 CREATE TABLE People (
 	Id int PRIMARY KEY IDENTITY,
 	Firstname varchar(25) NOT NULL,
@@ -30,3 +33,15 @@ INSERT INTO People(Firstname, Lastname, RegionId) VALUES('Tomas', 'Medison', 3)
 
 INSERT INTO People(Firstname, Lastname, RegionId) VALUES('Mark', 'Neece', 4)
 INSERT INTO People(Firstname, Lastname, RegionId) VALUES('Gans', 'Bell', 4)
+
+
+
+CREATE PROCEDURE GetPerson
+(
+	@RegionId int,
+	@StartId int,
+	@Count
+)
+AS
+
+
