@@ -34,6 +34,13 @@ namespace MastersProgramExam.AspNet.Controllers
             return res;
         }
 
+        [HttpPost]
+        public void CreatePerson(PersonVM prs)
+        {
+            var adapter = new Models.HomebookDatasetTableAdapters.QueriesTableAdapter();
+            adapter.Insert_Person(prs.Firstname, prs.Lastname, prs.RegionId);
+        }
+
         [HttpPut]
         public void UpdatePerson(PersonVM prs)
         {

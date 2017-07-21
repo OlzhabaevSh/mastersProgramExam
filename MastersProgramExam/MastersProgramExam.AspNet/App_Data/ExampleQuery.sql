@@ -37,6 +37,14 @@ INSERT INTO People(Firstname, Lastname, RegionId) VALUES('Gans', 'Bell', 4);
 
 
 
+CREATE PROCEDURE Get_Regions
+AS
+	SELECT * FROM Region
+RETURN 0
+
+
+
+
 CREATE PROCEDURE Get_People
 	@StartFrom int,
 	@PageSize int
@@ -52,6 +60,15 @@ AS
 	WHERE ppl.Id > @StartFrom;
 RETURN 0
 
+
+
+
+CREATE PROCEDURE Insert_Person
+	@Firstname varchar(25),
+	@Lastname varchar(25),
+	@RegionId int
+AS
+	INSERT INTO People(Firstname, Lastname, RegionId) VALUES(@Firstname, @Lastname, @RegionId);
 
 
 

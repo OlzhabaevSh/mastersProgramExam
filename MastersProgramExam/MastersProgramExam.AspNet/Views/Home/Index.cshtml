@@ -13,8 +13,97 @@
     <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
 </head>
 <body ng-app="homebookMdl" ng-controller="homebookCtrl" ng-init="init()">
-    <div> 
+    <div class="container"> 
+        <div class="row">
+            <div class="col-md-12">
+                
+                <h1>Homebook application</h1>
 
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h2>
+                            Persons
+                            <small><button class="btn btn-primary" 
+                                           ng-click="create()" 
+                                           data-toggle="modal" 
+                                           data-target="#myModal">Add</button></small>
+                        </h2>
+                    </div>
+                    <div class="panel-body">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>First name</th>
+                                    <th>Last name</th>
+                                    <th>Region</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="item in list"
+                                    ng-click="select(item)"
+                                    data-toggle="modal" data-target="#myModal">
+                                    <td>{{item.Id}}</td>
+                                    <td>{{item.Firstname}}</td>
+                                    <td>{{item.Lastname}}</td>
+                                    <td>{{item.Title}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="panel-footer">
+                        <ul class="pager">
+                            <li><a href="#" ng-click="previous()">Previous</a></li>
+                            <li><a href="#" ng-click="next()">Next</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>First name</label>
+                        <input type="text" class="form-control" placeholder="First name" ng-model="updateItem.Firstname">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Last name</label>
+                        <input type="text" class="form-control" placeholder="Last name" ng-model="updateItem.Lastname">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Region</label>
+                        <select class="form-control"
+                                ng-options="item.Title for item in regions"
+                                ng-model="selectedRegion"></select>
+                    </div>
+
+                    <div ng-show="isCreate == false">
+                        <button class="btn btn-success" ng-click="update()">Edit</button>
+
+                        <button class="btn btn-danger" ng-click="delete()">Remove</button>
+                    </div>
+
+                </div>
+                <div ng-hide="operation == ''" class="modal-footer">
+                    <label class="text-danger">Are you sure?</label>
+                    <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="cancel()">Close</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="submit()">Save changes</button>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script src="~/Scripts/angular.min.js"></script>
