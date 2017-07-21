@@ -122,6 +122,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>HomebookDataset.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Models\PersonVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
